@@ -1,99 +1,62 @@
-
 HTTP/1.1 200 OK
 
 <html>
+    <head>
+        <title>
+            HttpServer Project Home
+        </title>
+    </head>
     <body>
-        Welcome to HttpServer Project
+        <center>
+            Welcome to HttpServer Project
+        </center>
     </body>
 </html>
 
-----------
+-------------------------------------------------
 HTTP/1.1 200 OK
 
 <html>
+    <head>
+        <title>
+            HttpServer Project Home
+        </title>
+    </head>
     <body>
-        Welcome to HttpServer Project
+        <center>
+            Welcome to HttpServer Project
+        </center>
     </body>
 </html>
 
-----------
+-------------------------------------------------
 HTTP/1.1 200 OK
 
 <html>
-    <body>
-        Welcome to HttpServer Project
-    </body>
+	<head>
+		<title>
+			Index
+		</title>
+	</head>
+	<body>
+		<center>
+			Welcome to index.html!!
+		</center>
+	</body>
 </html>
-----------
-HTTP/1.1 200 OK
-    
-<html>
-<head>
-<title>Start</title>
-</head>
-<body>Welcome to index.html inside start folder
-</body>
-</html>----------
+-------------------------------------------------
 HTTP/1.1 200 OK
 
 <html>
-    <body>
-        Welcome to HttpServer Project
-    </body>
+	<head>
+		<title>
+			Start
+		</title>
+	</head>
+	<body>
+		<center>
+			Welcome to index.html inside start folder
+		</center>
+	</body>
 </html>
-----------
-HTTP/1.1 200 OK
-    
-<html>
-<head>
-<title>Start</title>
-</head>
-<body>Welcome to index.html inside start folder
-</body>
-</html>----------
-HTTP/1.1 200 OK
-    
-<html>
-<head>
-<title>Start</title>
-</head>
-<body>
-Welcome to index.html inside start folder
-</body>
-</html>----------
-HTTP/1.1 200 OK
-
-<html>
-    <body>
-        Welcome to HttpServer Project
-    </body>
-</html>
-----------
-HTTP/1.1 404 Not Found
-
-<html>
-    <body>
-        404 File Not Found
-    </body>
-</html>
-----------
-HTTP/1.1 200 OK
-
-<html>
-<head>
-<title>Index</title>
-</head>
-<body>
-Welcome to index.html!!
-</body>
-</html>----------
-HTTP/1.1 200 OK
-
-<html>
-<head>
-<title>Start</title>
-</head>
-<body>
-Welcome to index.html inside start folder
-</body>
-</html>----------
+-------------------------------------------------

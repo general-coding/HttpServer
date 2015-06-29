@@ -18,19 +18,18 @@ GET """ + folder + filename + """ HTTP/1.1
 Host: localhost:""" + str(port)
 
     try:
-        print REQUEST
+#         print REQUEST
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.connect(SERVER_ADDRESS)
         sock.sendall(REQUEST)
         data = sock.recv(1024)
         sock.close()
         # print 'Received', repr(data)
-        print 'Data from server %s' % data
+#         print 'Data from server %s' % data
         
-        log = open(client_log, 'a')        
-        log.write('\n')
+        log = open(client_log, 'a')
         log.write(data)
-        log.write('----------')
+        log.write('\n-------------------------------------------------\n')
         log.close()
     
     except socket_error as serr:
@@ -38,7 +37,7 @@ Host: localhost:""" + str(port)
             print 'Server not online'
             log = open(client_log, 'a')
             log.write('Server not online')
-            log.write('----------')
+            log.write('-------------------------------------------------')
             log.close()
     
 if __name__ == '__main__':
@@ -61,7 +60,7 @@ if __name__ == '__main__':
         '--filename',
         type=str,
         default='',
-        help='Maximum number of clients.'
+        help='File on the server.'
     )
     args = parser.parse_args()
 #     print args

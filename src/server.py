@@ -21,17 +21,15 @@ import argparse
 
 server_log = 'log/server_log.txt'
 
-def server_function(connectionSocket, addr):
-    try:
-        log = open(server_log, 'a')
-        
-        request = connectionSocket.recv(1024)
+def server_function(sock, addr):
+    try:      
+        request = sock.recv(1024)
 #         print type(request)
 #         print request
         
-        log.write('\n')
+        log = open(server_log, 'a')
         log.write(request)
-        log.write('----------')
+        log.write('\n------------------------------\n')
         log.close()
             
         filename = request.split()[1]
@@ -43,13 +41,20 @@ def server_function(connectionSocket, addr):
 HTTP/1.1 200 OK
 
 <html>
+    <head>
+        <title>
+            HttpServer Project Home
+        </title>
+    </head>
     <body>
-        Welcome to HttpServer Project
+        <center>
+            Welcome to HttpServer Project
+        </center>
     </body>
 </html>
 """
-                connectionSocket.sendall(http_response)
-                connectionSocket.close()
+                sock.sendall(http_response)
+                sock.close()
             
             if len(filename) > 1:
                 f = open(filename[1:], 'r')
@@ -59,39 +64,59 @@ HTTP/1.1 200 OK
 HTTP/1.1 200 OK
 
 """                            
-                connectionSocket.sendall(http_response)
+#                 sock.sendall(http_response)
                 
+#                 for i in range(0, len(outputdata)):
+#                     print outputdata[i]
+#                     sock.sendall(outputdata[i])
+    
                 for i in range(0, len(outputdata)):
-                    connectionSocket.sendall(outputdata[i])
+                    http_response = http_response + outputdata[i]
+                    
                 
                 f.close()
-                connectionSocket.close()
+                sock.sendall(http_response)
+                sock.close()
         
         except IOError:
             http_response = """\
 HTTP/1.1 404 Not Found
 
 <html>
+    <head>
+        <title>
+            HttpServer Project Home
+        </title>
+    </head>
     <body>
-        404 File Not Found
+        <center>
+            404 File Not Found
+        </center>
     </body>
 </html>
 """
-            connectionSocket.sendall(http_response)
-            connectionSocket.close()
+            sock.sendall(http_response)
+            sock.close()
 
     except IOError:
         http_response = """\
 HTTP/1.1 404 Not Found
 
 <html>
+    <head>
+        <title>
+            HttpServer Project Home
+        </title>
+    </head>
     <body>
-        404 Server Not Found
+        <center>
+            404 Server Not Found
+        </center>
     </body>
 </html>
 """
-        connectionSocket.sendall(http_response)
-        connectionSocket.close()
+        sock.sendall(http_response)
+        sock.close()
 
 def main(port):
     HOST = '127.0.0.1'
@@ -103,18 +128,23 @@ def main(port):
     PORT = port
     
     serverSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    serverSocket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+#     serverSocket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         
     serverSocket.bind((HOST, PORT))
     serverSocket.listen(5)
     
-    print('Serving on %s ' % PORT)
+    print 'Serving on %s ' % PORT
+    print 'Press Ctrl+C to exit'
     while True:
-        print('\nReady to serve...')
-        
-        connectionSocket, addr = serverSocket.accept()
-        
-        thread.start_new_thread(server_function, (connectionSocket, addr))
+        try:
+            print '\nReady to serve...'
+            
+            sock, addr = serverSocket.accept()
+            
+            thread.start_new_thread(server_function, (sock, addr))
+        except KeyboardInterrupt:
+            print 'Closing and exiting server'
+            exit()
          
     serverSocket.close()
 
