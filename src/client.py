@@ -50,7 +50,7 @@ if __name__ == '__main__':
         '--host',
         type=str,
         default='localhost',
-        help='Server name or IPf')
+        help='Server name or IP')
     parser.add_argument(
         '--port',
         type=int,
