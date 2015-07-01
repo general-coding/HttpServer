@@ -11,8 +11,9 @@ from socket import error as socket_error
 
 client_log = 'log/client_log.txt'
 
-def main(port, folder, filename):
-    SERVER_ADDRESS = 'localhost', port
+def main(host, port, folder, filename):
+#     SERVER_ADDRESS = 'localhost', port
+    SERVER_ADDRESS = host, port 
     REQUEST = b"""\
 GET """ + folder + filename + """ HTTP/1.1
 Host: localhost:""" + str(port)
@@ -46,6 +47,11 @@ if __name__ == '__main__':
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
     parser.add_argument(
+        '--host',
+        type=str,
+        default='localhost',
+        help='Server name or IPf')
+    parser.add_argument(
         '--port',
         type=int,
         default=8080,
@@ -68,10 +74,10 @@ if __name__ == '__main__':
     len_filename = len(args.filename)
     
     if len_folder == 0 and len_filename == 0:
-        main(args.port, '/', '')
+        main(args.host, args.port, '/', '')
     if len_folder == 0 and len_filename > 0:
-        main(args.port, args.folder, "/" + args.filename)
+        main(args.host, args.port, args.folder, "/" + args.filename)
     if len_folder > 0 and len_filename == 0:
-        main(args.port, "/" + args.folder, args.filename)
+        main(args.host, args.port, "/" + args.folder, args.filename)
     if len(args.folder) > 0 and len(args.filename) > 0:
-        main(args.port, "/" + args.folder, "/" + args.filename)
+        main(args.host, args.port, "/" + args.folder, "/" + args.filename)

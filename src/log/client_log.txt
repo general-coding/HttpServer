@@ -17,22 +17,6 @@ HTTP/1.1 200 OK
 HTTP/1.1 200 OK
 
 <html>
-    <head>
-        <title>
-            HttpServer Project Home
-        </title>
-    </head>
-    <body>
-        <center>
-            Welcome to HttpServer Project
-        </center>
-    </body>
-</html>
-
--------------------------------------------------
-HTTP/1.1 200 OK
-
-<html>
 	<head>
 		<title>
 			Index
