@@ -1,7 +1,19 @@
 '''
 Created on Jun 27, 2015
 
-@author: puneeth
+@author: Puneeth Umesh Bharawdaj
+@id: 100 110 6478
+
+References:
+http://www.tutorialspoint.com/python/python_command_line_arguments.htm
+http://codereview.stackexchange.com/questions/52701/proxy-using-socket-doubts-on-multithreading-and-connection-closing
+https://docs.python.org/3.1/howto/sockets.html
+http://ilab.cs.byu.edu/python/threadingmodule.html
+http://ruslanspivak.com/lsbaws-part1/
+http://learnpythonthehardway.org/book/ex15.html
+http://www.december.com/html/tutor/hello.html
+http://www.tutorialspoint.com/python/python_multithreading.htm
+
 '''
 
 import argparse
@@ -35,10 +47,10 @@ Host: localhost:""" + str(port)
     
     except socket_error as serr:
         if serr.errno == errno.ECONNREFUSED:
-            print 'Server not online'
+            print('Server not online')
             log = open(client_log, 'a')
             log.write('Server not online')
-            log.write('-------------------------------------------------')
+            log.write('\n-------------------------------------------------\n')
             log.close()
     
 if __name__ == '__main__':
@@ -50,7 +62,7 @@ if __name__ == '__main__':
         '--host',
         type=str,
         default='localhost',
-        help='Server name or IP')
+        help='Server name or IPf')
     parser.add_argument(
         '--port',
         type=int,

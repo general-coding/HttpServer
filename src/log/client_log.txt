@@ -44,3 +44,81 @@ HTTP/1.1 200 OK
 	</body>
 </html>
 -------------------------------------------------
+Server not online-------------------------------------------------HTTP/1.1 200 OK
+
+<html>
+    <head>
+        <title>
+            HttpServer Project Home
+        </title>
+    </head>
+    <body>
+        <center>
+            Hello World!! <br>
+        </center>
+    </body>
+</html>
+
+-------------------------------------------------
+HTTP/1.1 200 OK
+
+<html>
+    <head>
+        <title>
+            HttpServer Project Home
+        </title>
+    </head>
+    <body>
+        <center>
+            Hello World!! <br>
+        </center>
+    </body>
+</html>
+
+-------------------------------------------------
+Server not online-------------------------------------------------HTTP/1.1 200 OK
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<center>
+Hello World!! <br>
+Welcome to HttpServer Project.
+</center>
+</body>
+</html>
+-------------------------------------------------
+HTTP/1.1 200 OK
+
+<html>
+	<head>
+		<title>
+			Index
+		</title>
+	</head>
+	<body>
+		<center>
+			Welcome to index.html!!
+		</center>
+	</body>
+</html>
+-------------------------------------------------
+HTTP/1.1 200 OK
+
+<html>
+	<head>
+		<title>
+			Start
+		</title>
+	</head>
+	<body>
+		<center>
+			Welcome to index.html inside start folder
+		</center>
+	</body>
+</html>
+-------------------------------------------------

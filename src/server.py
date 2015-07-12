@@ -1,7 +1,8 @@
 '''
 Created on Jun 25, 2015
 
-@author: puneeth
+@author: Puneeth Umesh Bharawdaj
+@id: 100 110 6478
 
 References:
 http://www.tutorialspoint.com/python/python_command_line_arguments.htm
@@ -37,22 +38,33 @@ def server_function(sock, addr):
                         
         try:
             if len(filename) == 1:
+#                 http_response = """\
+# HTTP/1.1 200 OK
+# 
+# <html>
+#     <head>
+#         <title>
+#             HttpServer Project Home
+#         </title>
+#     </head>
+#     <body>
+#         <center>
+#             Hello World!! <br>
+#             Welcome to HttpServer Project
+#         </center>
+#     </body>
+# </html>
+# """
+                f = open('helloworld.html', 'r')
+                outputdata = f.readlines()
+                
                 http_response = """\
 HTTP/1.1 200 OK
 
-<html>
-    <head>
-        <title>
-            HttpServer Project Home
-        </title>
-    </head>
-    <body>
-        <center>
-            Welcome to HttpServer Project
-        </center>
-    </body>
-</html>
 """
+                for i in range(0, len(outputdata)):
+                    http_response = http_response + outputdata[i]
+                                
                 sock.sendall(http_response)
                 sock.close()
             
@@ -133,17 +145,17 @@ def main(port):
     serverSocket.bind((HOST, PORT))
     serverSocket.listen(5)
     
-    print 'Serving on %s ' % PORT
-    print 'Press Ctrl+C to exit'
+    print('Serving on %s ' % PORT)
+    print('Press Ctrl+C to exit')
     while True:
         try:
-            print '\nReady to serve...'
+            print('\nReady to serve...')
             
             sock, addr = serverSocket.accept()
             
             thread.start_new_thread(server_function, (sock, addr))
         except KeyboardInterrupt:
-            print 'Closing and exiting server'
+            print('Closing and exiting server')
             exit()
          
     serverSocket.close()
